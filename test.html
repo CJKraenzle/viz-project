@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .chart {
+        margin-top: 100px;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+    <title>Test Results</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/plotType.js"></script>
+  </head>
+  <body>
+
+    <svg id="scatterplot" class="chart"></svg>
+
+    <script>
+        let p;
+        document.addEventListener("DOMContentLoaded", (event)=>{
+          p = new PlotTypes();
+
+          // Data tests
+          console.log("Testing data parameter");
+          console.log("Data Test 1: null");
+          try {
+            p.setData(null);
+            console.log("        FAIL: Data as null did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Data Test 2: undefined");
+          try {
+            p.setData(undefined);
+            console.log("        FAIL: Data as undefined did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Data Test 3: not an array");
+          try {
+            p.setData("not an array");
+            console.log("        FAIL: Data not an array did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Data Test 4: pass an array");
+          try {
+            p.setData([ {x:0,y:0},
+              {x:1,y:1}, {x:1,y:2}, {x:1,y:3},
+              {x:2,y:1}, {x:2,y:2}, {x:2,y:3},
+              {x:3,y:1}, {x:3,y:2}, {x:3,y:3}, {x:4,y:4}
+            ]);
+            console.log("        PASS: Data is an array, no error");
+          } catch (e) {
+            console.log("        FAIL: unexpected error " + e.toString());
+          }
+
+          // X tests
+          console.log("");
+          console.log("Testing x parameter");
+          console.log("X Test 1: null");
+          try {
+            p.setX(null);
+            console.log("        FAIL: x as null did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("X Test 2: undefined");
+          try {
+            p.setX(undefined);
+            console.log("        FAIL: x as undefined did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("X Test 3: not a property");
+          try {
+            p.setX("hello");
+            console.log("        FAIL: X not a property of data");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("X Test 4: is a property");
+          try {
+            p.setX("x", "number");
+            console.log("        PASS: " + p.getX() + " is a property");
+          } catch (e) {
+            console.log("        FAIL: " + e.toString());
+          }
+
+
+          // Y tests
+          console.log("");
+          console.log("Testing y parameter");
+          console.log("Y Test 1: null");
+          try {
+            p.setY(null);
+            console.log("        FAIL: y as null did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Y Test 2: undefined");
+          try {
+            p.setY(undefined);
+            console.log("        FAIL: y as undefined did not throw an error");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Y Test 3: not a property");
+          try {
+            p.setY("hello");
+            console.log("        FAIL: y not a property of data");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+          console.log("Y Test 4: is a property");
+          try {
+            p.setY("y",  "number");
+            console.log("        PASS: " + p.getY() + " is a property");
+          } catch (e) {
+            console.log("        FAIL: " + e.toString());
+          }
+
+          // Validate SVG
+          console.log("");
+          console.log("Submit an ID that doesn't exist");
+          try {
+            p.scatterplot("badID");
+            console.log("        FAIL: accepted invalid ID");
+          } catch (e) {
+            console.log("        PASS: " + e.toString());
+          }
+
+          // Scatter Plot
+          console.log("");
+          console.log("Create a scatter plot");
+          try {
+            p.scatterplot("scatterplot");
+            console.log("        PASS: accepted ID");
+          } catch (e) {
+            console.log("        FAIL: " + e.toString());
+          }
+
+        });
+    </script>
+  </body>
+</html>

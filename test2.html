@@ -21,7 +21,7 @@
     <script>
         let p;
         document.addEventListener("DOMContentLoaded", (event)=>{
-          p = new PlotTypes();
+          p = new d3Plotter();
 
           // Data tests
           console.log("Testing data parameter");
@@ -48,10 +48,10 @@
           }
           console.log("Data Test 4: pass an array");
           try {
-            p.setData([ {x:0,y:0},
+            p.setData([ 
               {x:1,y:1}, {x:1,y:2}, {x:1,y:3},
               {x:2,y:1}, {x:2,y:2}, {x:2,y:3},
-              {x:3,y:1}, {x:3,y:2}, {x:3,y:3}, {x:4,y:4}
+              {x:3,y:1}, {x:3,y:2}, {x:3,y:3}
             ]);
             console.log("        PASS: Data is an array, no error");
           } catch (e) {
@@ -84,7 +84,7 @@
           }
           console.log("X Test 4: is a property");
           try {
-            p.setX("x", "number");
+            p.setX({ name: "x", datatype: "number" });
             console.log("        PASS: " + p.getX() + " is a property");
           } catch (e) {
             console.log("        FAIL: " + e.toString());
@@ -117,7 +117,7 @@
           }
           console.log("Y Test 4: is a property");
           try {
-            p.setY("y",  "number");
+            p.setY({ name: "y",  datatype: "number"});
             console.log("        PASS: " + p.getY() + " is a property");
           } catch (e) {
             console.log("        FAIL: " + e.toString());

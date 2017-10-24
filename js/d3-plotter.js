@@ -65,7 +65,7 @@
       if (x.datatype===undefined) throw new Error("Property name for x is undefined");
       if (x.name===null) throw new Error("Property name for x is null");
       if (x.datatype===null) throw new Error("Property name for x is null");
-      if (!Array.isArray(x)) throw new Error("X object is not an array");
+      if (Array.isArray(x)) throw new Error("X object is an array");
 
       xInfo = x;
     }
@@ -78,7 +78,7 @@
       if (y.datatype===undefined) throw new Error("Property name for x is undefined");
       if (y.name===null) throw new Error("Property name for x is null");
       if (y.datatype===null) throw new Error("Property name for x is null");
-      if (!Array.isArray(y)) throw new Error("X object is not an array");
+      if (Array.isArray(y)) throw new Error("Y object is an array");
 
       yInfo = y;
     }
@@ -93,24 +93,108 @@
     this.getMargin = function() {
       return margin;
     }
+    this.setSVGWidth = function(width) {
+      svgWidth = width;
+    };
+    this.getSVGWidth = function() {
+      return svgWidth;
+    };
+    this.setSVGHeight = function(height) {
+      svgHeight = height;
+    };
+    this.getSVGHeight = function() {
+      return svgHeight;
+    }
   }
 
   /* ********* ********* ********* ********* ********* ********* ********* 
    * Public Methods and variables
    * ********* ********* ********* ********* ********* ********* ********* */
-  d3Plotter.prototype.value = 1;
-  d3Plotter.prototype.method = function(echo) {
-    console.log(echo);
-    console.log(this.hello); // error
-    iAmPrivate();
+  d3Plotter.prototype.scatterplot = function(svgID) {
+    var scales;
+    var xInfo = this.getX();
+    var yInfo = this.getY();
+
+    try {
+      /* Validate element is an SVG */
+      validateSVG(svgID);
+    } catch (e) {
+      throw new Error(e);
+    }
+
+    this.setSVGWidth(document.getElementById(svgID).clientWidth);
+    this.setSVGHeight(document.getElementById(svgID).clientHeight);
+
+    scales = this.createScale();
+
+    var scatter = d3.select(("#" + svgID))
+      .selectAll("circle")
+      .data(this.getData());
+
+    scatter
+      .exit()
+        .remove();
+
+    scatter
+      .enter()
+      .append("circle")
+      .merge(scatter)
+        // Start attributes on resize
+        .attr("r", 12)
+        // Transition after resize
+        .transition(d3.transition().duration(750))
+          .attr("cx", function(d) { return scales.x(d[xInfo.name]); })
+          .attr("cy", function(d) { return scales.y(d[yInfo.name]); })
+          .attr("r" , 2);
+
   }
 
-  /* Protected Methods */
-  function iAmPrivate() {
-    console.log("PRIVATE!")
+  /* Create Scale */
+  d3Plotter.prototype.createScale = function() {
+    var x;
+    var y;
+    var xInfo = this.getX();
+    var yInfo = this.getY();
+    var m = this.getMargin();
+    var w = this.getSVGWidth();
+    var h = this.getSVGHeight();
+
+    /* Create x scale */
+    if (xInfo.datatype=="number") {
+      x = d3.scaleLinear()
+        .domain( d3.extent(this.getData(), function(row) { return row[xInfo.name]; }))
+        .range([m.left, w - m.right])
+        .nice();
+    }
+    /* Create y scale */
+    if (yInfo.datatype=="number") {
+      y = d3.scaleLinear()
+        .domain( d3.extent(this.getData(), function(row) { return row[yInfo.name]; }))
+        .range([h - m.top, m.bottom ])
+        .nice();
+    }
+    console.log(x(2) + " : " + y(2));
+    return { x, y };
+  }
+
+  /* ********* ********* ********* ********* ********* ********* ********* 
+   * Protected Methods
+   * ********* ********* ********* ********* ********* ********* ********* */
+  /* Validate SVG */
+  function validateSVG(svgID) {
+    var element = document.getElementById(svgID);
+    if (element===null) throw new Error("Element " + svgID + ", not found");
+    if (element===undefined) throw new Error("Element " + svgID + ", is not defined");
+    if (element.nodeName.toLowerCase()==="svg") return;
+    throw new Error("Not an SVG element");
   }
 })();
 
+
+/* ********* ********* ********* ********* ********* ********* ********* 
+ * Testing
+ * ********* ********* ********* ********* ********* ********* ********* */
+/* Basic tests 
 var h = new d3Plotter();
 h.method("echo");
 
@@ -133,3 +217,4 @@ try {
 }
 
 h.setData([1,2,3,4,5]);
+*/

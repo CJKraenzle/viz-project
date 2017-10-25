@@ -16,7 +16,6 @@
    * Public Variables
    * ********* ********* ********* ********* ********* ********* ********* */
   HappyData.prototype.processMetadata = function(d) {
-    console.log(d.code);
     return {
       code : d["code"],
       region : d["region"],
@@ -59,12 +58,12 @@
   };
   HappyData.prototype.loadPopulation = function(d) {
     d3.csv("data/population.csv", this.processPopulation, function(data) {
-      this.metadata = data;
+      this.populaiton = data;
     });
   };
-  HappyData.prototype.loadMetadata = function(d) {
-    d3.csv("data/metadata.csv", this.processMetadata, function(data) {
-      this.metadata = data;
+  HappyData.prototype.loadCountry = function(d) {
+    d3.csv("data/country.csv", this.processHappy, function(data) {
+      this.happy = data;
     });
   };
 })();

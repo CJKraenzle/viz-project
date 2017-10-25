@@ -1,6 +1,9 @@
 /**
  * Author: Christopher Kraenzle 
  */
+var dataloaded = document.createEvent("Event");
+dataloaded.initEvent("dataloaded", true, true);
+
 (function() {
   this.HappyData = function() {
     var version = "0.0.1";
@@ -11,6 +14,7 @@
   HappyData.prototype.metadata = [];
   HappyData.prototype.population = [];
   HappyData.prototype.happy = [];
+  HappyData.prototype.loaded = 0;
 
   /* ********* ********* ********* ********* ********* ********* ********* 
    * Public Variables
@@ -21,7 +25,7 @@
       region : d["region"],
       incomeGroup : d["incomeGroup"]
     };
-  };
+  }
   HappyData.prototype.processPopulation = function(d) {
     return {
       code : d["code"],
@@ -36,7 +40,7 @@
       year2015 : +d["year2015"],
       year2016 : +d["year2016"]
     };
-  };
+  }
   HappyData.prototype.processHappy = function(d) {
     return {
       code : d["code"],
@@ -50,20 +54,30 @@
 			generosity: +d["generosity"],
 			corruption: +d["corruption"]
     };
-  };
+  }
   HappyData.prototype.loadMetadata = function(d) {
+    var that = this;
     d3.csv("data/metadata.csv", this.processMetadata, function(data) {
       this.metadata = data;
+      that.loadComplete();
     });
-  };
+  }
   HappyData.prototype.loadPopulation = function(d) {
     d3.csv("data/population.csv", this.processPopulation, function(data) {
       this.populaiton = data;
+      s.loadComplete();
     });
-  };
+  }
   HappyData.prototype.loadCountry = function(d) {
     d3.csv("data/country.csv", this.processHappy, function(data) {
       this.happy = data;
+      s.loadComplete();
     });
-  };
+  }
+  HappyData.prototype.loadComplete = function() {
+    this.loaded++;
+    if (this.loaded==3) {
+      document.dispatchEvent(dataloaded);
+    }
+  }
 })();

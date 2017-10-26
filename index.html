@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
 
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" type="text/css" href="css/main.css" >
 
     <title>Viz Project</title>
 
@@ -16,6 +16,20 @@
     <script src="js/index.js"></script>
   </head>
   <body>
-    <svg id="chart1" class="chart"></svg>
+    <section id="appHeader">
+      Interactive Visualization
+    </section>
+    <section id="appChart">
+        <svg id="chart1" class="chart"></svg>
+    </section>
+    <section id="appValues">
+      <ul>
+        <li class="selected" value="">Clear</li>
+        <li class="" value="">High Income</li>
+        <li class="" value="">Upper Middle</li>
+        <li class="" value="">Lower Middle</li>
+        <li class="" value="">Low Income</li>
+      </ul>
+    </section>
   </body>
 </html>

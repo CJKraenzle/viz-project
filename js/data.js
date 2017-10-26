@@ -58,20 +58,22 @@ dataloaded.initEvent("dataloaded", true, true);
   HappyData.prototype.loadMetadata = function(d) {
     var that = this;
     d3.csv("data/metadata.csv", this.processMetadata, function(data) {
-      this.metadata = data;
+      that.metadata = data;
       that.loadComplete();
     });
   }
   HappyData.prototype.loadPopulation = function(d) {
+    var that = this;
     d3.csv("data/population.csv", this.processPopulation, function(data) {
-      this.populaiton = data;
-      s.loadComplete();
+      that.populaiton = data;
+      that.loadComplete();
     });
   }
   HappyData.prototype.loadCountry = function(d) {
+    var that = this;
     d3.csv("data/country.csv", this.processHappy, function(data) {
-      this.happy = data;
-      s.loadComplete();
+      that.happy = data;
+      that.loadComplete();
     });
   }
   HappyData.prototype.loadComplete = function() {
@@ -79,5 +81,8 @@ dataloaded.initEvent("dataloaded", true, true);
     if (this.loaded==3) {
       document.dispatchEvent(dataloaded);
     }
+  }
+  HappyData.prototype.distinctValues = function(objects, property) {
+    return d3.map(objects, function(d) { return d[property]; }).keys().sort();
   }
 })();

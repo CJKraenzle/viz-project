@@ -114,6 +114,7 @@
     var scales;
     var xInfo = this.getX();
     var yInfo = this.getY();
+    var data = this.getData();
 
     try {
       /* Validate element is an SVG */
@@ -122,14 +123,13 @@
       throw new Error(e);
     }
 
-    this.setSVGWidth(document.getElementById(svgID).clientWidth);
-    this.setSVGHeight(document.getElementById(svgID).clientHeight);
-
+    document.getElementById(svgID).setAttribute("width", this.getSVGWidth());
+    document.getElementById(svgID).setAttribute("height", this.getSVGHeight());
     scales = this.createScale();
 
     var scatter = d3.select(("#" + svgID))
       .selectAll("circle")
-      .data(this.getData());
+      .data(data);
 
     scatter
       .exit()
@@ -140,12 +140,26 @@
       .append("circle")
       .merge(scatter)
         // Start attributes on resize
-        .attr("r", 12)
+        .attr("r", 1)
         // Transition after resize
         .transition(d3.transition().duration(750))
           .attr("cx", function(d) { return scales.x(d[xInfo.name]); })
           .attr("cy", function(d) { return scales.y(d[yInfo.name]); })
-          .attr("r" , 2);
+          .attr("r" , 4)
+          .style("fill", function(d) { 
+            var value = Math.round(d[yInfo.name] % 4);
+            console.log(value);
+            if (value==0) {
+              return "#000000";
+            } else if (value==1) {
+              return "#ff0000";
+            } else if (value==2) {
+              return "#00ff00";
+            } else if (value==3) {
+              return "#0000ff";
+            }
+            return "#212121";
+          });
 
   }
 
@@ -158,22 +172,28 @@
     var m = this.getMargin();
     var w = this.getSVGWidth();
     var h = this.getSVGHeight();
+    var data = this.getData();
 
     /* Create x scale */
     if (xInfo.datatype=="number") {
       x = d3.scaleLinear()
-        .domain( d3.extent(this.getData(), function(row) { return row[xInfo.name]; }))
+        .domain( d3.extent(data, function(row) { return row[xInfo.name]; }))
         .range([m.left, w - m.right])
         .nice();
+    } else if (xInfo.datatype=="string") {
+      x = d3.scaleBand()
+        .domain(data.map(function(row) { return row[xInfo.name] }))
+        .rangeRound([m.left, w - m.right])
+        .padding(0.1);
     }
     /* Create y scale */
     if (yInfo.datatype=="number") {
       y = d3.scaleLinear()
-        .domain( d3.extent(this.getData(), function(row) { return row[yInfo.name]; }))
+        .domain( d3.extent(data, function(row) { return row[yInfo.name]; }))
         .range([h - m.top, m.bottom ])
         .nice();
     }
-    console.log(x(2) + " : " + y(2));
+//    console.log(x(2) + " : " + y(2));
     return { x, y };
   }
 

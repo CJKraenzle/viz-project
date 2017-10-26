@@ -16,11 +16,7 @@ ul {
 li {
   margin: 1px;
   padding: 10px;
-}
-li:hover {
-  cursor: pointer;
-  background-color: rgb(4, 162, 224);
-  color: #ffffff;
+  font-weight: bold;
 }
 #appHeader {
   position: absolute;
@@ -39,7 +35,7 @@ li:hover {
   top: 100px;
   right: 20px;
   width: 170px;
-  height: 230px;
+  height: 240px;
 
   background-color: #ffffff;
   color: #000000;
@@ -54,4 +50,44 @@ li:hover {
   bottom: 20px;
 
   background-color: #ffffff;
+}
+#li0 {
+  color: rgb(130, 131, 135);
+}
+#li1 {
+  color: rgb(0, 26, 255);
+}
+#li2 {
+  color: rgb(0, 206, 0);
+}
+#li3 {
+  color: rgb(255, 81, 0);
+}
+#li4 {
+  color: rgb(255, 0, 60);
+}
+#li0:hover {
+  cursor: pointer;
+  background-color: rgb(130, 131, 135);
+  color: #000000;
+}
+#li1:hover {
+  cursor: pointer;
+  background-color: rgb(0, 26, 255);
+  color: #ffffff;
+}
+#li2:hover {
+  cursor: pointer;
+  background-color: rgb(0, 206, 0);
+  color: #ffffff;
+}
+#li3:hover {
+  cursor: pointer;
+  background-color: rgb(255, 81, 0);
+  color: #ffffff;
+}
+#li4:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 60);
+  color: #ffffff;
 }

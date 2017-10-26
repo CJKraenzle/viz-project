@@ -146,19 +146,22 @@
           .attr("cx", function(d) { return scales.x(d[xInfo.name]); })
           .attr("cy", function(d) { return scales.y(d[yInfo.name]); })
           .attr("r" , 4)
-          .style("fill", function(d) { 
-            var value = Math.round(d[yInfo.name] % 4);
-            console.log(value);
-            if (value==0) {
-              return "#000000";
-            } else if (value==1) {
-              return "#ff0000";
-            } else if (value==2) {
-              return "#00ff00";
-            } else if (value==3) {
-              return "#0000ff";
+          .style("fill", function(d) {
+            var color = "rgba(130, 131, 135, 0.5)";
+
+            if (d.incomeGroup=="High income") {
+              color = "rgba(0, 26, 255, 0.5)";
+            } else if (d.incomeGroup=="Low income") {
+              color = "rgba(255, 0, 60, 0.5)";
+            } else if (d.incomeGroup=="Upper middle income") {
+              color = "rgba(0, 206, 0, 0.5)";
+            } else if (d.incomeGroup=="Lower middle income") {
+              color = "rgba(255, 81, 0, 0.5)";
             }
-            return "#212121";
+
+
+            
+            return color;
           });
 
   }

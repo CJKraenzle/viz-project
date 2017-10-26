@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   p = new d3Plotter();
 
   document.addEventListener("dataloaded", function(event) {
+    addIncomeGrowth();
     drawPage();
   });
 
@@ -31,4 +32,15 @@ function drawPage() {
   p.setSVGWidth(window.innerWidth - 200);
   p.setSVGHeight(window.innerHeight - 100);
   p.scatterplot("chart1");
+}
+
+function addIncomeGrowth() {
+  for (var i=0; i < s.happy.length; i++) {
+    s.happy[i].incomeGroup = "";
+    for (var j=0; j < s.metadata.length; j++) {
+      if (s.happy[i].code==s.metadata[j].code) {
+        s.happy[i].incomeGroup = s.metadata[j].incomeGroup;
+      }
+    }
+  }
 }

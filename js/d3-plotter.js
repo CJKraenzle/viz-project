@@ -110,11 +110,13 @@
   /* ********* ********* ********* ********* ********* ********* ********* 
    * Public Methods and variables
    * ********* ********* ********* ********* ********* ********* ********* */
+  d3Plotter.prototype.incomeGroup = "";
   d3Plotter.prototype.scatterplot = function(svgID) {
     var scales;
     var xInfo = this.getX();
     var yInfo = this.getY();
     var data = this.getData();
+    var incomeGroup = this.incomeGroup;
 
     try {
       /* Validate element is an SVG */
@@ -145,7 +147,12 @@
         .transition(d3.transition().duration(750))
           .attr("cx", function(d) { return scales.x(d[xInfo.name]); })
           .attr("cy", function(d) { return scales.y(d[yInfo.name]); })
-          .attr("r" , 4)
+          .attr("r" , function(d) {
+            var radius = 4;
+            if (incomeGroup=="") return radius;
+            if (d.incomeGroup!=incomeGroup) return 3;
+            return 6;
+          })
           .style("fill", function(d) {
             var color = "rgba(130, 131, 135, 0.5)";
 
@@ -159,8 +166,8 @@
               color = "rgba(255, 81, 0, 0.5)";
             }
 
-
-            
+            if (incomeGroup=="") return color;
+            if (d.incomeGroup!=incomeGroup) return "rgba(130, 131, 135, 0.5)";
             return color;
           });
 

@@ -13,6 +13,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
     drawPage();
   });
 
+  document.getElementById("li0").addEventListener("click", function(event){
+    removeSelected();
+    document.getElementById("li0").classList.add("selected");
+    p.incomeGroup = "";
+    drawPage();
+  });
+
+  document.getElementById("li1").addEventListener("click", function(event){
+    removeSelected();
+    document.getElementById("li1").classList.add("selected");
+    p.incomeGroup = "High income";
+    drawPage();
+  });
+
+  document.getElementById("li2").addEventListener("click", function(event){
+    removeSelected();
+    document.getElementById("li2").classList.add("selected");
+    p.incomeGroup = "Upper middle income";
+    drawPage();
+  });
+
+  document.getElementById("li3").addEventListener("click", function(event){
+    removeSelected();
+    document.getElementById("li3").classList.add("selected");
+    p.incomeGroup = "Lower middle income";
+    drawPage();
+  });
+
+  document.getElementById("li4").addEventListener("click", function(event){
+    removeSelected();
+    document.getElementById("li4").classList.add("selected");
+    p.incomeGroup = "Low income";
+    drawPage();
+  });
+
   window.addEventListener("resize", function(event) {
     drawPage();
   });
@@ -43,4 +78,12 @@ function addIncomeGrowth() {
       }
     }
   }
+}
+
+function removeSelected() {
+  document.getElementById("li0").classList.remove("selected");
+  document.getElementById("li1").classList.remove("selected");
+  document.getElementById("li2").classList.remove("selected");
+  document.getElementById("li3").classList.remove("selected");
+  document.getElementById("li4").classList.remove("selected");  
 }

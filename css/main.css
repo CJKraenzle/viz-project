@@ -66,6 +66,7 @@ li {
 #li4 {
   color: rgb(255, 0, 60);
 }
+
 #li0:hover {
   cursor: pointer;
   background-color: rgb(130, 131, 135);
@@ -74,19 +75,45 @@ li {
 #li1:hover {
   cursor: pointer;
   background-color: rgb(0, 26, 255);
-  color: #ffffff;
+  color: #000000;
 }
 #li2:hover {
   cursor: pointer;
   background-color: rgb(0, 206, 0);
-  color: #ffffff;
+  color: #000000;
 }
 #li3:hover {
   cursor: pointer;
   background-color: rgb(255, 81, 0);
-  color: #ffffff;
+  color: #000000;
 }
 #li4:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 60);
+  color: #000000;
+}
+
+#li0.selected {
+  cursor: pointer;
+  background-color: rgb(130, 131, 135);
+  color: #ffffff;
+}
+#li1.selected {
+  cursor: pointer;
+  background-color: rgb(0, 26, 255);
+  color: #ffffff;
+}
+#li2.selected {
+  cursor: pointer;
+  background-color: rgb(0, 206, 0);
+  color: #ffffff;
+}
+#li3.selected {
+  cursor: pointer;
+  background-color: rgb(255, 81, 0);
+  color: #ffffff;
+}
+#li4.selected {
   cursor: pointer;
   background-color: rgb(255, 0, 60);
   color: #ffffff;

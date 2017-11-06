@@ -1,89 +1,80 @@
-/**
- * Author: Christopher Kraenzle 
- */
-var s;
-var p;
+var map = {};
+var whr;
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  s = new HappyData();
-  p = new d3Plotter();
-
-  document.addEventListener("dataloaded", function(event) {
-    addIncomeGrowth();
-    drawPage();
-  });
-
-  document.getElementById("li0").addEventListener("click", function(event){
-    removeSelected();
-    document.getElementById("li0").classList.add("selected");
-    p.incomeGroup = "";
-    drawPage();
-  });
-
-  document.getElementById("li1").addEventListener("click", function(event){
-    removeSelected();
-    document.getElementById("li1").classList.add("selected");
-    p.incomeGroup = "High income";
-    drawPage();
-  });
-
-  document.getElementById("li2").addEventListener("click", function(event){
-    removeSelected();
-    document.getElementById("li2").classList.add("selected");
-    p.incomeGroup = "Upper middle income";
-    drawPage();
-  });
-
-  document.getElementById("li3").addEventListener("click", function(event){
-    removeSelected();
-    document.getElementById("li3").classList.add("selected");
-    p.incomeGroup = "Lower middle income";
-    drawPage();
-  });
-
-  document.getElementById("li4").addEventListener("click", function(event){
-    removeSelected();
-    document.getElementById("li4").classList.add("selected");
-    p.incomeGroup = "Low income";
-    drawPage();
-  });
-
-  window.addEventListener("resize", function(event) {
-    drawPage();
-  });
-
-  s.loadMetadata();
-  s.loadPopulation();
-  s.loadCountry();
+  //s = new HappyData();
+  whr = new WorldHappinessReport();  
+  //mapSetup();
 });
 
-function drawPage() {
-  var region = s.distinctValues(s.metadata, "region");
-  var incomeGroup = s.distinctValues(s.metadata, "incomeGroup");
+function mapSetup() {
+  map.margin = { top : 0, right : 0, bottom : 0, left : 0};
+  map.w = 900 - map.margin.left - map.margin.right;
+  map.h = 500 - map.margin.top - map.margin.bottom;
+  map.color = d3.scaleThreshold()
+    .domain([1,2,3,4,5,6,7,8,9])
+    .range([
+      "#bbdefb",
+      "#90caf9",
+      "#64b5f6",
+      "#42a5f5",
+      "#2196f3",
+      "#1e88e5",
+      "#1976d2",
+      "#1565c0",
+      "#0d47a1"
+    ]);
+  
+  map.svg = d3.select("#appWorld")
+    .append("svg")
+    .attr("width", map.w)
+    .attr("height", map.h)
+    .append("g")
+    .attr("class", "map");
 
-  p.setData(s.happy);
-  p.setX({ name: "country", datatype: "string" });
-  p.setY({ name: "lifeladder", datatype: "number" });
-  p.setSVGWidth(window.innerWidth - 200);
-  p.setSVGHeight(window.innerHeight - 100);
-  p.scatterplot("chart1");
+  map.projection = d3.geoRobinson()
+    .scale(180)
+    .rotate([0,0,0])
+    .translate( [ map.w / 2, map.h / 2 ]);
+
+  map.path = d3.geoPath().projection(map.projection);
+
+  queue()
+  .defer(d3.json, "data/world_countries.json")
+  .await(mapReady); 
 }
 
-function addIncomeGrowth() {
-  for (var i=0; i < s.happy.length; i++) {
-    s.happy[i].incomeGroup = "";
-    for (var j=0; j < s.metadata.length; j++) {
-      if (s.happy[i].code==s.metadata[j].code) {
-        s.happy[i].incomeGroup = s.metadata[j].incomeGroup;
-      }
-    }
-  }
-}
+function mapReady(error, data, population) {
+  var i = 0;
 
-function removeSelected() {
-  document.getElementById("li0").classList.remove("selected");
-  document.getElementById("li1").classList.remove("selected");
-  document.getElementById("li2").classList.remove("selected");
-  document.getElementById("li3").classList.remove("selected");
-  document.getElementById("li4").classList.remove("selected");  
+  map.svg.append("g")
+      .attr("class", "countries")
+    .selectAll("path")
+      .data(data.features)
+    .enter().append("path")
+      .attr("d", map.path)
+      .style("fill", function(d) { 
+        i++;
+        return map.color((i % 7 + 1)); 
+      })
+      .style("stroke", "#ffffff")
+      .style("stroke-width", 0.5)
+      .style("opacity",0.6)
+      .on('mouseover', function(d) {
+        d3.select(this)
+          .style("stroke","#bf360c")
+          .style("stroke-width", 1)
+          .style("opacity", 1);
+      })
+      .on('mouseout', function(d) {
+        d3.select(this)
+          .style("stroke","#ffffff")
+          .style("stroke-width", 0.5)
+          .style("opacity", 0.6);
+  });
+
+  map.svg.append("path")
+    .datum(topojson.mesh(data.features, function(a, b) { return a.id !== b.id; }))
+    .attr("class", "names")
+    .attr("d", map.path);
 }

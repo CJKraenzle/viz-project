@@ -1,0 +1,68 @@
+body {
+  margin : 0;
+  padding : 0;
+
+  overflow : hidden;
+}
+section#appHeader {
+  box-sizing : border-box;
+  position : absolute;
+  top : 0px;
+  left : 0px;
+  right : 0px;
+  height: 50px;
+
+  padding-left: 10px;
+
+  background-color: #ffffff;
+  font-family: "Patrick Hand SC";
+  font-size: 28pt;
+  color: #0d47a1;
+}
+div#appContext {
+  box-sizing : border-box;
+  position : absolute;
+  top : 60px;
+  bottom : 40px;
+  left : 0px;
+  right : 0px;
+
+  overflow: hidden;
+  overflow-y: auto;
+}
+section#appWorld {
+  box-sizing: border-box;
+  position : absolute;
+  top : 0px;
+  left : 10px;
+  width : 900px;
+  height : 500px;
+
+  border: 1px solid #ececec;
+  background-color: #ffffff;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+section#appRight {
+  box-sizing : border-box;
+  position : absolute;
+  top : 60px;
+  left : 920px;
+  width : 250px;
+  bottom: 25px;
+}
+section#appScroll {
+  box-sizing : border-box;
+  position : absolute; 
+
+}
+section#appFooter {
+  box-sizing : border-box;
+  position : absolute;
+  bottom : 0px;
+  left : 0px;
+  right : 0px;
+  height : 25px;
+
+  background-color: #262c43;
+}

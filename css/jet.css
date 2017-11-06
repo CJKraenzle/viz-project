@@ -1,0 +1,14 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#yo {
+  width: 800px;
+  height: 800px;
+}
+.line {
+  stroke: black;
+  stroke-width: 1;
+  fill: #ffffff;
+}

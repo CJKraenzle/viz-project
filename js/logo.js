@@ -25,15 +25,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .attr("startOffset","50%")
       .text("DATA, ANALYTICS");
 
-//  svg.append("text")
-//      .attr("dy", -8)
-//    .append("textPath")
-//      .attr("xlink:href","#wavy")
-//      .attr("id","pw-top")
-//      .style("text-anchor","middle")
-//      .attr("startOffset","50%")
-//      .text("Pratt & Whitney");
-
   svg.append("path")
     .attr("id","wavy-bottom")
     .attr("d", "M 25,250 A 100,100 0 0,0 475,250")
@@ -49,15 +40,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .style("text-anchor","middle")
       .attr("startOffset","50%")
       .text("& VISUALIZATION");
-
-//  svg.append("text")
-//      .attr("dy", 32)
-//    .append("textPath")
-//      .attr("xlink:href","#wavy-bottom")
-//      .attr("id","pw-bottom")
-//      .style("text-anchor","middle")
-//      .attr("startOffset","50%")
-//      .text("Digital Technology");
 
   svg.append("circle")
     .attr("cx", 250)
@@ -89,14 +71,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     svg.selectAll(".test2")
       .attr("transform", function() { return "rotate(" + (-1 * delta / 10) + ",250, 250)"; })
-
-//    if (delta / 5 <= 360) {
-//      svg.selectAll("#wavy")
-//      .attr("transform", function() { return "rotate(" + (delta / 5 ) + ",250, 250)"; })
-
-//      svg.selectAll("#wavy-bottom")
-//      .attr("transform", function() { return "rotate(" + (-1 * delta / 5 ) + ",250, 250)"; })
-//    }
   }, 15);
 
   var tpoints = [

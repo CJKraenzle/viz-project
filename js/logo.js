@@ -1,5 +1,8 @@
 var svg;
 var init = Date.now();
+var mapsvg;
+var projection;
+var mapath;
 
 document.addEventListener("DOMContentLoaded", function(event) {
   svg = d3.select("body")
@@ -27,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   svg.append("path")
     .attr("id","wavy-bottom")
-    .attr("d", "M 25,250 A 100,100 0 0,0 475,250")
+    .attr("d", "M 475,250 A 100,100 0 0,1 25,250")
     .style("fill", "#001f3f") // Navy
     .style("stroke", "none")
     .style("stroke-width","0");
 
   svg.append("text")
-      .attr("dy", -18)
+      .attr("dy", 48)
     .append("textPath")
       .attr("xlink:href","#wavy-bottom")
       .attr("id","wavyText-bottom")
@@ -45,10 +48,58 @@ document.addEventListener("DOMContentLoaded", function(event) {
     .attr("cx", 250)
     .attr("cy", 250)
     .attr("r", 155)
+    .attr("id", "donut-hole")
     .style("fill","#ffffff") 
-    .style("fill-opacity","0.9")
+    .style("fill-opacity","1")
     .style("stroke","none");
 
+/* Map */
+  mapsvg = d3.select("svg")
+    .append("g")
+    .attr("class","map")
+    .attr("width", 200)
+    .attr("height", 200);
+projection = d3.geoRobinson()
+    .scale(65)
+    .rotate([0,0,0])
+    .translate([250,250]);
+  mapath = d3.geoPath().projection(projection);
+  queue()
+    .defer(d3.json, "data/world_countries.json")
+    .await(mapready);
+
+  function mapready(error, data) {
+    mapsvg.append("g")
+        .attr("class", "countries")
+        .attr("width", 200)
+        .attr("height", 200)
+      .selectAll("path")
+        .data(data.features)
+      .enter().append("path")
+        .attr("d", mapath)
+      .style("fill", "#262c43")
+      .style("stroke", "#ffffff")
+      .style("stroke-width", 0.5)
+      .style("opacity",0.6)
+      .on('mouseover', function(d) {
+        d3.select(this)
+          .style("stroke","#bf360c")
+          .style("stroke-width", 1)
+          .style("opacity", 1);
+      })
+      .on('mouseout', function(d) {
+        d3.select(this)
+          .style("stroke","#ffffff")
+          .style("stroke-width", 0.5)
+          .style("opacity", 0.6);
+      });
+    
+    mapsvg.append("path")
+      .datum(topojson.mesh(data.features, function(a, b) { return a.id !== b.id; }))
+      .attr("class", "names")
+      .attr("d", mapath);
+  }
+/* Motion items */    
   svg.append("circle")
     .attr("class","test")
     .attr("cx", 250)
@@ -73,16 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .attr("transform", function() { return "rotate(" + (-1 * delta / 10) + ",250, 250)"; })
   }, 15);
 
-  var tpoints = [
-    [125, 250],
-    [150, 180],
-    [205, 235],
-    [250, 115],
-    [295, 235],
-    [350, 180],
-    [380, 250],
-    [250, 165]
-  ];
+  var tpoints = [[125, 250],[150, 180],[205, 235],[250, 115],[295, 235],[350, 180],[380, 250],[250, 165]];
 
   var topPath = svg.append("path")
     .data([tpoints])
@@ -124,141 +166,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
   }
-
-  svg.append("line")
-    .attr("id","bottom-split")
-    .attr("x1", 250)
-    .attr("y1", 250)
-    .attr("x2", 250)
-    .attr("y2", 405)
-    .style("stroke", "#747474");
-
-  var cluster1 = [
-    [120,270],
-    [126,301],
-    [128,310],
-    [132,290],
-    [142,280],
-    [145,320],
-    [142,270],
-    [155,280],
-    [160,320],
-    [165,270],
-    [170,285]
-  ];
-
-  var cluster2 = [
-    [232,278],
-    [235,317],
-    [221,313],
-    [204,263],
-    [207,281],
-    [179,268],
-    [206,319],
-    [232,293],
-    [194,255],
-    [213,267],
-    [205,306],
-    [187,310]    
-  ];
-
-  var cluster3 = [
-    [210,390],
-    [195,359],
-    [185,352],
-    [191,355],
-    [163,354],
-    [183,355],
-    [228,373],
-    [205,356],
-    [160,346],
-    [225,369],
-    [182,381],
-    [219,358],
-    [191,354],
-    [199,347],
-    [185,386],
-    [214,345],
-    [218,384],
-    [157,328],
-    [237,348],
-    [173,375]    
-  ];
-
-  svg.selectAll(".cluster1")
-    .data(cluster1)
-    .enter()
-      .append("circle")
-        .attr("r", 5)
-        .attr("transform", function(d) { return "translate(" + d + ")"; })
-        .attr("fill", "#006bfc")
-        .style("fill-opacity","0.4");
-        
-  svg.selectAll(".cluster2")
-    .data(cluster2)
-    .enter()
-      .append("circle")
-        .attr("r", 5)
-        .attr("transform", function(d) { return "translate(" + d + ")"; })
-        .attr("fill", "#fc0000")
-        .style("fill-opacity","0.4");
-        
-  svg.selectAll(".cluster3")
-    .data(cluster3)
-    .enter()
-      .append("circle")
-        .attr("r", 5)
-        .attr("transform", function(d) { return "translate(" + d + ")"; })
-        .attr("fill", "#15ff00")
-        .style("fill-opacity","0.4");
-        
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 260)
-    .attr("width", 145)
-    .attr("height", 20)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-    
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 285)
-    .attr("width", 135)
-    .attr("height", 20)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-    
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 310)
-    .attr("width", 120)
-    .attr("height", 20)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 335)
-    .attr("width", 100)
-    .attr("height", 20)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-    
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 360)
-    .attr("width", 60)
-    .attr("height", 20)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-    
-  svg.append("rect")
-    .attr("x", 251)
-    .attr("y", 385)
-    .attr("width", 18)
-    .attr("height", 19)
-    .style("fill", "orange")
-    .style("fill-opacity","0.4");
-    
-
 });

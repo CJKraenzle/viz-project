@@ -166,4 +166,145 @@ projection = d3.geoRobinson()
       }
     }
   }
+<<<<<<< HEAD
 });
+=======
+
+  svg.append("line")
+    .attr("id","bottom-split")
+    .attr("x1", 250)
+    .attr("y1", 250)
+    .attr("x2", 250)
+    .attr("y2", 405)
+    .style("stroke", "#747474");
+
+  var cluster1 = [
+    [120,270],
+    [126,301],
+    [128,310],
+    [132,290],
+    [142,280],
+    [145,320],
+    [142,270],
+    [155,280],
+    [160,320],
+    [165,270],
+    [170,285]
+  ];
+
+  var cluster2 = [
+    [232,278],
+    [235,317],
+    [221,313],
+    [204,263],
+    [207,281],
+    [179,268],
+    [206,319],
+    [232,293],
+    [194,255],
+    [213,267],
+    [205,306],
+    [187,310]    
+  ];
+
+  var cluster3 = [
+    [210,390],
+    [195,359],
+    [185,352],
+    [191,355],
+    [163,354],
+    [183,355],
+    [228,373],
+    [205,356],
+    [160,346],
+    [225,369],
+    [182,381],
+    [219,358],
+    [191,354],
+    [199,347],
+    [185,386],
+    [214,345],
+    [218,384],
+    [157,328],
+    [237,348],
+    [173,375]    
+  ];
+
+  svg.selectAll(".cluster1")
+    .data(cluster1)
+    .enter()
+      .append("circle")
+        .attr("r", 5)
+        .attr("transform", function(d) { return "translate(" + d + ")"; })
+        .attr("fill", "#006bfc")
+        .style("fill-opacity","0.4");
+        
+  svg.selectAll(".cluster2")
+    .data(cluster2)
+    .enter()
+      .append("circle")
+        .attr("r", 5)
+        .attr("transform", function(d) { return "translate(" + d + ")"; })
+        .attr("fill", "#fc0000")
+        .style("fill-opacity","0.4");
+        
+  svg.selectAll(".cluster3")
+    .data(cluster3)
+    .enter()
+      .append("circle")
+        .attr("r", 5)
+        .attr("transform", function(d) { return "translate(" + d + ")"; })
+        .attr("fill", "#15ff00")
+        .style("fill-opacity","0.4");
+        
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 260)
+    .attr("width", 145)
+    .attr("height", 20)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+    
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 285)
+    .attr("width", 135)
+    .attr("height", 20)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+    
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 310)
+    .attr("width", 120)
+    .attr("height", 20)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 335)
+    .attr("width", 100)
+    .attr("height", 20)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+    
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 360)
+    .attr("width", 60)
+    .attr("height", 20)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+    
+  svg.append("rect")
+    .attr("x", 251)
+    .attr("y", 385)
+    .attr("width", 18)
+    .attr("height", 19)
+    .style("fill", "orange")
+    .style("fill-opacity","0.4");
+    
+
+});
+>>>>>>> 34536bd7039f8b6417e01588abf9d84fd80d87b6

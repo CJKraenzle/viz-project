@@ -66,21 +66,21 @@ Basic user interface.  For this project we are moving to a dark background inste
 
 ## Task Review
 
-[#1](../../issues/1)
+1. [Select javascript libraries](../../issues/1)
 
-[#1](../../issues/2)
+1. [Select fonts for project](../../issues/2)
 
-[#1](../../issues/3)
+1. [Create directory structure](../../issues/3)
 
-[#1](../../issues/4)
+1. [Profile each variable](../../issues/4)
 
-[#1](../../issues/5)
+1. [Unique values and missing data](../../issues/5)
 
-[#1](../../issues/6)
+1. [Create World Happiness visualization](../../issues/6)
 
-[#1](../../issues/7)
+1. [Create time phased happiness visualization](../../issues/7)
 
-[#1](../../issues/8)
+1. [Create data profile visualization](../../issues/8)
 
 
 # viz-project

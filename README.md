@@ -1,6 +1,7 @@
 ### Why this repository exists
 
 <div style="color:red;">Hello</div>
+
 ```html
 <div style="color:red;">Hello</div>
 ```

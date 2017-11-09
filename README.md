@@ -10,6 +10,8 @@ From the [World Happiness Report](http://worldhappiness.report/)
 
 > The <i>World Happiness Report</i> is a landmark survey of the state of global happiness.  The [World Happiness Report 2017](http://worldhappiness.report/ed/2017/), which ranks 155 countries by their happiness levels, will be released today at the United Nations at an event celebrating International Day of Happiness.  The report, the fifth one to come out since 2012, continues to gain global recognition as governments, organizations and civil society increasingly use happiness indicators to inform their policy-making decisions.
 
+The World Happiness Report has created a [great video](https://youtu.be/Se2gfFKp1Iw) explaining their mission.
+
 ## Data review
 
 ## Visualizations

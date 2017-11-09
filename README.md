@@ -1,3 +1,20 @@
+### Why this repository exists
+
+# World Happiness Report 
+
+
+
+## Data review
+
+## Visualizations
+
+## Learning experiences aka prototypes
+
+## User Experience aka interactions
+
+## Task Review
+
+
 # viz-project
 Final data visualization project for Data Visualization class (WPI CS573)
 

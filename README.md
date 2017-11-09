@@ -68,6 +68,19 @@ Basic user interface.  For this project we are moving to a dark background inste
 
 [#1](../../issues/1)
 
+[#1](../../issues/2)
+
+[#1](../../issues/3)
+
+[#1](../../issues/4)
+
+[#1](../../issues/5)
+
+[#1](../../issues/6)
+
+[#1](../../issues/7)
+
+[#1](../../issues/8)
 
 
 # viz-project

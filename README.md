@@ -36,7 +36,9 @@ The data set ranks 155 countries based on a survey with six key indicators (Inco
 
 ## Visualizations
 
-For this project, the plan is to complete three visualizations.  
+For this project, the plan is to complete three visualizations.  The first visualization is an overview focused on the happiness ranking.  This visualization will display a world map with color coding to show the ranking.  The goal is to see how specific countries rank their happiness and if there are trends by region.
+
+![World Map](/img/WorldMap.JPG)
 
 ## Learning experiences aka prototypes
 

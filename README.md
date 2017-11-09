@@ -10,7 +10,7 @@ I am currently in a Data Science program at [Worchester Polytechnic Institute](h
 
 [Visualizations](https://github.com/CJKraenzle/viz-project#visualizations)
 
-[Learning experiences](https://github.com/CJKraenzle/viz-project#learning-experiences-aka-prototypes)
+[Prototypes]()
 
 [User Experience](https://github.com/CJKraenzle/viz-project#user-experience-aka-interactions)
 
@@ -40,7 +40,11 @@ For this project, the plan is to complete three visualizations.  The first visua
 
 ![World Map](/img/WorldMap.JPG)
 
-## Learning experiences aka prototypes
+The second visualization is meant to show change over time.  The goal is to show how a key indicator changes over time and how it impacts overall happiness.  This visualization, is the hardest visualization to date to find the right codings/markings to show change over time for multiple variables.  I will add an image when I settle on the final view of this visualization.
+
+The final view is a detail view showing key indicators over time by country, which allows us to visualize a much smaller set of data.  This chart will simulate the voyager scatter plots but allows filtering by country.
+
+## Prototypes
 
 ## User Experience aka interactions
 

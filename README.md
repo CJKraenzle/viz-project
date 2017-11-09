@@ -1,7 +1,8 @@
 ### Why this repository exists
 
+<span style="color:red;">Hello</span>
 ```html
-<div style="color:red;"></div>
+<div style="color:red;">Hello</div>
 ```
 
 # World Happiness Report 

@@ -1,5 +1,9 @@
 ### Why this repository exists
 
+```html
+<div style="color:red;"></div>
+```
+
 # World Happiness Report 
 
 

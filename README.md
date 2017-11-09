@@ -3,11 +3,17 @@
 I am currently in a Data Science program at [Worchester Polytechnic Institute](https://www.wpi.edu) working on a master's degree.  My current course is CS573 - Data Visualization taught by [Curran Kelleher](https://datavis.tech) :thumbsup:.  We used the text book called "Visualization Analysis & Design" by Tamara Munzner.  Along with the book we have spent time learning how to implement visualization concepts using D3.  This repository contains the code for my final project.  Continue reading to learn more about this project, or click the project URL to see the final results.  [Project URL](https://cjkraenzle.github.io/viz-project/)
 
 #### Table of Contents
+
 [World Happiness Report](https://github.com/CJKraenzle/viz-project#world-happiness-report)
+
 [Data Review](https://github.com/CJKraenzle/viz-project#data-review)
+
 [Visualizations](https://github.com/CJKraenzle/viz-project#visualizations)
+
 [Learning experiences](https://github.com/CJKraenzle/viz-project#learning-experiences-aka-prototypes)
+
 [User Experience](https://github.com/CJKraenzle/viz-project#user-experience-aka-interactions)
+
 [Task Review](https://github.com/CJKraenzle/viz-project#task-review)
 
 Note: :construction: If you are visiting this site before November 16th, 2017 then please consider it a work in progress! :construction: 

@@ -1,10 +1,8 @@
-### Why this repository exists
+# Why this repository exists
 
-<div style="color:red;">Hello</div>
+I am currently in a Data Science program at [Worchester Polytechnic Institute](https://www.wpi.edu) working on a master's degree.  My current course is CS573 - Data Visualization taught by @curran (:thumbsup:).  We used the text book called "Visualization Analysis & Design" by Tamara Munzner.  Along with the book we have spent time learning how to implement visualization concepts using D3.  This repository contains the code for my final project.  Continue reading to learn more about this project, or click the project URL to see the final results.  [Project URL](https://cjkraenzle.github.io/viz-project/)
 
-```html
-<div style="color:red;">Hello</div>
-```
+Note: :construction: If you are visiting this site before November 16th, 2017 then please consider it a work in progress! :construction: 
 
 # World Happiness Report 
 

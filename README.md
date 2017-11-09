@@ -66,7 +66,7 @@ Basic user interface.  For this project we are moving to a dark background inste
 
 ## Task Review
 
-[#1](/CJKraenzle/viz-project/issues/1)
+[#1](../../issues/1)
 
 
 

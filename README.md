@@ -28,6 +28,12 @@ The World Happiness Report has created a [great video](https://youtu.be/Se2gfFKp
 
 ## Data review
 
+I originally started this project using a a smaller data set found on Kaggle.  However, after some more research I found that the [World Happiness Report](http://worldhappiness.report/) provides their data under the dowload section, chapter 2.  
+
+The data set ranks 155 countries based on a survey with six key indicators (Income, Health, Social Support, Freedom, generosity, and trustworthy governance).  These indicators are evaluated with the happiness ranking to determine what factors are driving world happiness.  The data in the data set covers 2008 through 2016.  Using the [Voyager tool](http://vega.github.io/voyager/) we created a simple plot showing a key indicator against the happiness rank.
+
+![Key indicators v. Happiness](/img/KeyIndicators.JPG)
+
 ## Visualizations
 
 ## Learning experiences aka prototypes

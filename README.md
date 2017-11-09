@@ -56,12 +56,13 @@ The following are some of the prototypes that have been generated
 
 ![Prototype 4](/img/prototype4.JPG)
 
+## User Experience aka interactions
+
+Basic user interface.  For this project we are moving to a dark background instead of a light background.  We are going to use tabs at the bottom of the screen for flipping around the visualizations.  The plan is to link from one level of visualizaiton to the next, but will also allow the user to change views without drilling down.  The goal is to see if this design provides any value or causes to much movement by the user...
+
 ![Prototype 5](/img/prototype5.JPG)
 
 ![Prototype 6](/img/prototype6.JPG)
-
-
-## User Experience aka interactions
 
 ## Task Review
 

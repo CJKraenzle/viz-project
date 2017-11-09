@@ -36,6 +36,8 @@ The data set ranks 155 countries based on a survey with six key indicators (Inco
 
 ## Visualizations
 
+For this project, the plan is to complete three visualizations.  
+
 ## Learning experiences aka prototypes
 
 ## User Experience aka interactions

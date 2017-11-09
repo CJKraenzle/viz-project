@@ -10,7 +10,7 @@ I am currently in a Data Science program at [Worchester Polytechnic Institute](h
 
 [Visualizations](https://github.com/CJKraenzle/viz-project#visualizations)
 
-[Prototypes]()
+[Prototypes](https://github.com/CJKraenzle/viz-project#prototypes)
 
 [User Experience](https://github.com/CJKraenzle/viz-project#user-experience-aka-interactions)
 
@@ -45,6 +45,21 @@ The second visualization is meant to show change over time.  The goal is to show
 The final view is a detail view showing key indicators over time by country, which allows us to visualize a much smaller set of data.  This chart will simulate the voyager scatter plots but allows filtering by country.
 
 ## Prototypes
+
+The following are some of the prototypes that have been generated
+
+![Prototype 1](/img/prototype1.JPG)
+
+![Prototype 2](/img/prototype2.JPG)
+
+![Prototype 3](/img/prototype3.JPG)
+
+![Prototype 4](/img/prototype4.JPG)
+
+![Prototype 5](/img/prototype5.JPG)
+
+![Prototype 6](/img/prototype6.JPG)
+
 
 ## User Experience aka interactions
 

@@ -4,10 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed|Slabo+27px">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" type="text/css" href="css/colors.css">
-  <link rel="stylesheet" type="text/css" href="css/final.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
   
   <title>Map</title>
   
@@ -15,27 +18,17 @@
   <script src="http://d3js.org/queue.v1.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="http://d3js.org/d3-geo-projection.v1.min.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/map.js"></script>
-  <script src="js/final.js"></script>
-  
+
+  <script src="js/index.js"></script>
+  <script src="js/whr.js"></script>
 </head>
 <body>
-  <section id="appHeader"></div>World Happiness Report</section>
-  <section id="legend">
-    <ul id="lstHappyRank">
-      <li id="rank9">Happiest</li>
-      <li id="rank8">Rank 8</li>
-      <li id="rank7">Rank 7</li>
-      <li id="rank6">Rank 6</li>
-      <li id="rank5">Rank 5</li>
-      <li id="rank4">Rank 4</li>
-      <li id="rank3">Rank 3</li>
-      <li id="rank2">Rank 2</li>
-      <li id="rank1">Saddest</li>
-    </ul>
-  </section>
-  <section id="appOverview"></section>
+  <section id="appHeader">World Happiness Report</section>
+  <div id="appContext">
+    <section id="appWorld"></section>
+    <section id="appRight"></section>
+    <section id="appScroll"></section>
+  </div>
   <section id="appFooter"></section>
 </body>
 </html>

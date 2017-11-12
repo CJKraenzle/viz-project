@@ -1,12 +1,36 @@
 var h;
-
+var s;
 document.addEventListener("DOMContentLoaded", function(event) {
   h = new HappyData();
+  s = new d3Plotter();
 
   document.addEventListener("dataloaded", function(event){
     queue()
       .defer(d3.json, "data/world_countries.json")
       .await(ready);
+
+    var x = {};
+    x.name = "lifeladder";
+    x.datatype = "number";
+    var y = {};
+    y.name = "gdpPerCapita";
+    y.datatype = "number";
+    var margin = {};
+    margin.top = 20;
+    margin.left = 150;
+    margin.right = 0;
+    margin.bottom = 150;
+    
+    var filterData = h.happy.filter(function(d) {
+      return d.year==2016;
+    });
+    s.setData(filterData);
+    s.setX(x);
+    s.setY(y);
+    s.setMargin(margin);
+    s.setSVGHeight("500");
+    s.setSVGWidth("960");
+    s.scatterplot("svgDetail");
   })
 
   h.loadMetadata();
@@ -65,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("rank2").addEventListener("mouseout", hoverOut);
   document.getElementById("rank1").addEventListener("mouseover", hoverRank);
   document.getElementById("rank1").addEventListener("mouseout", hoverOut);
+
 });
 
 function hoverRank(event) {
@@ -77,6 +102,23 @@ function hoverRank(event) {
   for( var i=0; i < col2.length; i++) {
     col2[i].style["opacity"] = 1;
   }
+
+  var filterData = h.happy.filter(function(d) {
+    var value1 = "" + Math.ceil(d.lifeladder);
+    var value2 = event.target.id.substring(4,5)
+    if (value1==value2 && d.year==2016) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  s.setData(filterData);
+  //s.setX(x);
+  //s.setY(y);
+  //s.setMargin(margin);
+  //s.setSVGHeight("500");
+  //s.setSVGWidth("960");
+  s.scatterplot("svgDetail");
 }
 
 function hoverOut(event) {
@@ -84,5 +126,16 @@ function hoverOut(event) {
   for( var i=0; i < col.length; i++) {
     col[i].style["opacity"] = 1;
   }
+
+  var filterData = h.happy.filter(function(d) {
+    return d.year==2016;
+  });
+  s.setData(filterData);
+  //s.setX(x);
+  //s.setY(y);
+  //s.setMargin(margin);
+  //s.setSVGHeight("500");
+  //s.setSVGWidth("960");
+  s.scatterplot("svgDetail");
 }
 

@@ -111,6 +111,11 @@
    * Public Methods and variables
    * ********* ********* ********* ********* ********* ********* ********* */
   d3Plotter.prototype.incomeGroup = "";
+  d3Plotter.prototype.filter = function(key, value) {
+    var newdata = this.getData().filter(function(d) {
+      return d[k] = v;
+    });
+  }
   d3Plotter.prototype.scatterplot = function(svgID) {
     var scales;
     var xInfo = this.getX();
@@ -166,8 +171,10 @@
               color = "rgba(255, 81, 0, 0.5)";
             }
 
+            return "rgba(0, 26, 255, 0.5)";
             if (incomeGroup=="") return color;
             if (d.incomeGroup!=incomeGroup) return "rgba(130, 131, 135, 0.5)";
+            color = "rgba(0, 26, 255, 0.5)";
             return color;
           });
 

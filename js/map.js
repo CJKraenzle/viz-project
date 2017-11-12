@@ -1,9 +1,5 @@
 var map = {};
 
-document.addEventListener("DOMContentLoaded", function(event) {
-
-});
-
 function ready(error, data) {
   map.data = data;
   var i = 0;
@@ -53,7 +49,6 @@ function ready(error, data) {
 }
 
 function getIndicator(country, name) {
-  console.log("passed country: " + country);
   for (var i=0; i < h.happy.length; i++) {
     if (h.happy[i].country==country) {
       return h.happy[i][name];

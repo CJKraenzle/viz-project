@@ -24,23 +24,30 @@ html, body {
 }
 #wrapper {
   position: absolute;
-  top: 0px;
-  bottom: 0px;
+  top: 60px;
+  bottom: 30px;
   left: 0px;
   right: 0px;
 }
 #appOverview {
   box-sizing: border-box;
   position: absolute;
-  top: 60px;
+  top: 0px;
   left: 0px;
   right: 0px;
-  bottom: 30px;
+  height: 530px;
 
   background-color: #eeede6;
   z-index: 10;
 }
-
+#appDetail {
+  box-sizing: border-box;
+  position: absolute;
+  top: 530px;
+  left: 0px;
+  right: 0px;
+  height: 530px;
+}
 #appFooter {
   box-sizing: border-box;
   position: absolute;

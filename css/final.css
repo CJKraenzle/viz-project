@@ -3,7 +3,7 @@ html, body {
   margin: 0px;
   
   font-family: Raleway, Helvetica;
-  background-color: #262c43;
+  background-color: #eeede6;
 }
 
 #appHeader {
@@ -19,10 +19,16 @@ html, body {
   font-family: "Montserrat";
   font-size: 34pt;
 
-  background-color: #f9a825;
-  color: #262c43;
+  background-color: #02424d;
+  color: #ffffff;
 }
-
+#wrapper {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
 #appOverview {
   box-sizing: border-box;
   position: absolute;
@@ -31,6 +37,7 @@ html, body {
   right: 0px;
   bottom: 30px;
 
+  background-color: #eeede6;
   z-index: 10;
 }
 
@@ -42,7 +49,6 @@ html, body {
   right: 0px;
   height: 30px;
 
-  background-color: #a07124;
   font-size: 8pt;
 }
 
@@ -55,8 +61,8 @@ html, body {
 #lstHappyRank {
   list-style: none;
   position: absolute;
-  top: 350px;
-  left: 1200px;
+  top: 150px;
+  left: 960px;
   width: 120px;
   height: 270px;
 
@@ -76,30 +82,30 @@ html, body {
   border-bottom: 1px solid #ffffff;
 }
 
-#lstHappyRank li:nth-child(1) {
+#lstHappyRank li:nth-child(9) {
   background-color: #bbdefb;
 }
-#lstHappyRank li:nth-child(2) {
+#lstHappyRank li:nth-child(8) {
   background-color: #90caf9;
 }
-#lstHappyRank li:nth-child(3) {
+#lstHappyRank li:nth-child(7) {
   background-color: #64b5f6;
 }
-#lstHappyRank li:nth-child(4) {
+#lstHappyRank li:nth-child(6) {
   background-color: #42a5f5;
 }
 #lstHappyRank li:nth-child(5) {
   background-color: #2196f3;
 }
-#lstHappyRank li:nth-child(6) {
+#lstHappyRank li:nth-child(4) {
   background-color: #1e88e5;
 }
-#lstHappyRank li:nth-child(7) {
+#lstHappyRank li:nth-child(3) {
   background-color: #1976d2;
 }
-#lstHappyRank li:nth-child(8) {
+#lstHappyRank li:nth-child(2) {
   background-color: #1565c0;
 }
-#lstHappyRank li:nth-child(9) {
+#lstHappyRank li:nth-child(1) {
   background-color: #0d47a1;
 }

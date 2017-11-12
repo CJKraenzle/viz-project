@@ -33,17 +33,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
   map.svg = d3.select("#appOverview")
     .append("svg")
-    .attr("width", 1150)
-    .attr("height", 750)
+    .attr("width", 960)
+    .attr("height", 500)
     .append("g")
     .attr("class", "map")
     .append("g")
     .attr("class", "countries");
 
   map.projection = d3.geoRobinson()
-    .scale(200)
+    .scale(150)
     .rotate([0,0,0])
-    .translate( [ 500, 350 ]);
+    .translate( [ 480, 250 ]);
 
   map.path = d3.geoPath().projection(map.projection);
 

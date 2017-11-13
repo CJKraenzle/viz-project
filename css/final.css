@@ -56,6 +56,7 @@ html, body {
   right: 0px;
   height: 30px;
 
+  background-color: #969696;
   font-size: 8pt;
 }
 
@@ -115,4 +116,44 @@ html, body {
 }
 #lstHappyRank li:nth-child(1) {
   background-color: #0d47a1;
+}
+
+#ftrMenu {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  
+  top: 0px;
+  height: 30px;
+  width: 100%;
+
+  background-color: #02424d;
+  color: #ffffff;
+
+  overflow: hidden;
+}
+#ftrMenu li {
+  box-sizing: border-box;
+  float: left;
+  
+  margin-left: 10px;
+  padding-top: 3px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #002b31;
+  color: #008d9c;
+  
+  width: 150px;
+  height: 25px;
+  
+  font-size: 12pt;
+  overflow: hidden;
+
+  text-align: center;
+  cursor: pointer;
+}
+#ftrMenu li.selected {
+  background-color: #ffffff;
+  color: #000000;
 }

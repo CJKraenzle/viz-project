@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .await(ready);
 
     var x = {};
-    x.name = "lifeladder";
+    x.name = "gdpPerCapita";
     x.datatype = "number";
     var y = {};
-    y.name = "gdpPerCapita";
+    y.name = "lifeladder";
     y.datatype = "number";
     var margin = {};
     margin.top = 20;

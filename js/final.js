@@ -4,16 +4,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
   h = new HappyData();
   s = new d3Plotter();
 
+  document.getElementById("ftrOverview").addEventListener("click", function() {
+    document.getElementById("ftrOverview").classList.remove("selected");
+    document.getElementById("ftrDetail").classList.remove("selected");
+    document.getElementById("ftrOverview").classList.add("selected");
+
+    document.getElementById("wrapperDetail").style.display = "none";
+    document.getElementById("wrapper").style.display = "block";
+  }); 
+  document.getElementById("ftrDetail").addEventListener("click", function() {
+    document.getElementById("ftrDetail").classList.remove("selected");
+    document.getElementById("ftrOverview").classList.remove("selected");
+    document.getElementById("ftrDetail").classList.add("selected");
+
+    document.getElementById("wrapper").style.display = "none";
+    document.getElementById("wrapperDetail").style.display = "block";
+  }); 
+  
   document.addEventListener("dataloaded", function(event){
     queue()
       .defer(d3.json, "data/world_countries.json")
       .await(ready);
 
     var x = {};
-    x.name = "gdpPerCapita";
+    x.name = "lifeladder";
     x.datatype = "number";
     var y = {};
-    y.name = "lifeladder";
+    y.name = "gdpPerCapita";
     y.datatype = "number";
     var margin = {};
     margin.top = 20;

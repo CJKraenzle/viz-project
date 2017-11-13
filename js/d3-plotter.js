@@ -178,6 +178,26 @@
             return color;
           });
 
+    scatter.append("g")
+      .attr("transform", "translate(0,960)")
+      .call(d3.axisBottom(scales.x));
+    scatter.append("text")
+      .attr("class","label")
+      .attr("y", 425)
+      .attr("x", 250)
+      .style("text-anchor", "middle")
+      .text("Happiness Ranking");
+
+    scatter.append("g")
+      .attr("transform", "translate(150,0)")
+      .call(d3.axisLeft(scales.y));
+    scatter.append("text")
+      .attr("class","label")
+      .attr("y", 100)
+      .attr("x", -250)
+      .style("text-anchor", "middle")
+      .text("GDP Per Capita");
+
   }
 
   /* Create Scale */

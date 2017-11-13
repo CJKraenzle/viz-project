@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.getElementById("wrapper").style.display = "none";
     document.getElementById("wrapperDetail").style.display = "block";
+
+    d2CreateScales("year","lifeladder");
+    d2CreateScatterPlot("year","lifeladder")
   }); 
   
   document.addEventListener("dataloaded", function(event){
@@ -106,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("rank2").addEventListener("mouseout", hoverOut);
   document.getElementById("rank1").addEventListener("mouseover", hoverRank);
   document.getElementById("rank1").addEventListener("mouseout", hoverOut);
-
 });
 
 function hoverRank(event) {

@@ -132,11 +132,6 @@ function hoverRank(event) {
     }
   });
   s.setData(filterData);
-  //s.setX(x);
-  //s.setY(y);
-  //s.setMargin(margin);
-  //s.setSVGHeight("500");
-  //s.setSVGWidth("960");
   s.scatterplot("svgDetail");
 }
 
@@ -150,11 +145,6 @@ function hoverOut(event) {
     return d.year==2016;
   });
   s.setData(filterData);
-  //s.setX(x);
-  //s.setY(y);
-  //s.setMargin(margin);
-  //s.setSVGHeight("500");
-  //s.setSVGWidth("960");
   s.scatterplot("svgDetail");
 }
 

@@ -111,6 +111,7 @@
    * Public Methods and variables
    * ********* ********* ********* ********* ********* ********* ********* */
   d3Plotter.prototype.incomeGroup = "";
+  d3Plotter.prototype.axis = [];
   d3Plotter.prototype.filter = function(key, value) {
     var newdata = this.getData().filter(function(d) {
       return d[k] = v;
@@ -178,26 +179,43 @@
             return color;
           });
 
-    scatter.append("g")
+    /*
+    var scatterAxis = d3.select(("#" + svgID));
+    scatterAxis.append("g")
       .attr("transform", "translate(0,960)")
       .call(d3.axisBottom(scales.x));
-    scatter.append("text")
+    scatterAxis.append("text")
       .attr("class","label")
       .attr("y", 425)
       .attr("x", 250)
       .style("text-anchor", "middle")
       .text("Happiness Ranking");
 
-    scatter.append("g")
+    scatterAxis.append("g")
       .attr("transform", "translate(150,0)")
       .call(d3.axisLeft(scales.y));
-    scatter.append("text")
+    scatterAxis.append("text")
       .attr("class","label")
       .attr("y", 100)
       .attr("x", -250)
       .style("text-anchor", "middle")
       .text("GDP Per Capita");
+    */
+    this.xAxis(scales, svgID);
+  }
+  d3Plotter.prototype.xAxis = function(scales, svgID) {
+    if (this.axis.xAxisG!=undefined) axis.xAxisG.remove();
+    if (this.axis.xAxisTitle!=undefined) axis.xAxisTitle.remove();
 
+    this.axis.xAxis = d3.axisBottom(scales.x)
+      .tickFormat(function(d,i) {
+        if (this.getData()[d]==undefined) return "";
+        return this.getData()[d].lifeladder;
+      });
+    this.axis.xAxisG = d3.select("#" + svgID)
+      .append("g")
+      .attr("transform", "translate(0," + this.getMargin().height - this.getMargin().bottom + ")")
+      .call(this.axis.xAxis);
   }
 
   /* Create Scale */
@@ -230,7 +248,6 @@
         .range([h - m.top, m.bottom ])
         .nice();
     }
-//    console.log(x(2) + " : " + y(2));
     return { x, y };
   }
 

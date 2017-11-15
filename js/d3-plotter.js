@@ -37,7 +37,7 @@
     var margin = {
       top : 20,
       right : 10,
-      bottom : 20,
+      bottom : 30,
       left : 10 
     };
     var svgWidth = 0;
@@ -201,20 +201,18 @@
       .style("text-anchor", "middle")
       .text("GDP Per Capita");
     */
-    this.xAxis(scales, svgID);
+    this.xAxis(scales, svgID, data);
   }
-  d3Plotter.prototype.xAxis = function(scales, svgID) {
+  d3Plotter.prototype.xAxis = function(scales, svgID, data) {
+    data = d3.map(data, function(d) { return Math.ceil(d.lifeladder); }).keys().sort();
     if (this.axis.xAxisG!=undefined) axis.xAxisG.remove();
     if (this.axis.xAxisTitle!=undefined) axis.xAxisTitle.remove();
 
-    this.axis.xAxis = d3.axisBottom(scales.x)
-      .tickFormat(function(d,i) {
-        if (this.getData()[d]==undefined) return "";
-        return this.getData()[d].lifeladder;
-      });
+    this.axis.xAxis = d3.axisBottom(scales.x);
+//      .tickFormat([0,1,2,3,4,5,6,7,8,9]);
     this.axis.xAxisG = d3.select("#" + svgID)
       .append("g")
-      .attr("transform", "translate(0," + this.getMargin().height - this.getMargin().bottom + ")")
+      .attr("transform", "translate(0,475)")
       .call(this.axis.xAxis);
   }
 
@@ -232,14 +230,15 @@
     /* Create x scale */
     if (xInfo.datatype=="number") {
       x = d3.scaleLinear()
-        .domain( d3.extent(data, function(row) { return row[xInfo.name]; }))
+//      .domain( d3.extent(data, function(row) { return row[xInfo.name]; }))
+        .domain( [ 0, 9 ])
         .range([m.left, w - m.right])
         .nice();
     } else if (xInfo.datatype=="string") {
       x = d3.scaleBand()
         .domain(data.map(function(row) { return row[xInfo.name] }))
         .rangeRound([m.left, w - m.right])
-        .padding(0.1);
+        .padding(.1);
     }
     /* Create y scale */
     if (yInfo.datatype=="number") {

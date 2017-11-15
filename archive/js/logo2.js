@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Create an SVG Path - bottom half
   svg.append("path")
     .attr("id", "arch-bottom")
-    .attr("d", "M 450,250 A 100,100 0 0,1 50,250")
+    .attr("d", "M 50,250 A 100,100 0 0,0 450,250")
     .style("fill", "none")
     .style("stroke", "#001f3f")
     .style("stroke-width",75);
